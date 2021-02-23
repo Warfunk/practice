@@ -1,8 +1,11 @@
+// creating hash table class
+
 class HashTable {
   constructor(size) {
     this.data = new Array(size);
   }
 
+  //hash function
   _hash(key) {
     let hash = 0;
     for (let i = 0; i < key.length; i++) {
@@ -11,6 +14,7 @@ class HashTable {
     return hash;
   }
 
+  // create new data point in hash table
   set(key, value) {
     let h = this._hash(key);
     if (!this.data[h]) {
@@ -20,6 +24,7 @@ class HashTable {
     return this.data;
   }
 
+  // find data point in hash table
   get(key) {
     let h = this._hash(key);
     for (let item of this.data[h]) {
@@ -31,6 +36,7 @@ class HashTable {
     return undefined;
   }
 
+  // return all existing keys in hash table
   keys() {
     const keysArray = [];
     for (let i = 0; i < this.data.length; i++) {
@@ -44,13 +50,3 @@ class HashTable {
     return keysArray;
   }
 }
-
-const myHashTable = new HashTable(2);
-
-myHashTable.set('grapes', 1000);
-myHashTable.get('grapes');
-myHashTable.set('oranges', 'howdy');
-myHashTable.get('oranges');
-myHashTable.set('apples', 10);
-myHashTable.set('bananas', 1);
-myHashTable.keys();
